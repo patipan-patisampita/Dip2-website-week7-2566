@@ -1,16 +1,30 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Root App Component</h1>
+  <p>{{ username[0] }}</p>
+  <component-a />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ComponentA from './components/ComponentA.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ComponentA,
+  },
+  data() {
+    return {
+      username: ['chanpen', 'ploy'],
+      employee: { id: 101, fname: 'Jeyon', age: 17 }
+    }
+  },
+  provide() {
+    return {
+      username: this.username[0] + this.username[1],
+      employee:"Name:" + this.employee.fname + ", Age:" + this.employee.age
+    }
   }
+
 }
 </script>
 
